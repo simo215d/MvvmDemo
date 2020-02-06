@@ -1,4 +1,4 @@
-package com.example.mvvmdemo;
+package com.example.mvvmdemo.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,8 +8,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.mvvmdemo.R;
+import com.example.mvvmdemo.model.Model;
+
 public class MainActivity extends AppCompatActivity {
-    private String text;
     private Button button;
     private TextView textView;
     private EditText editText;
@@ -28,8 +30,8 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                text=editText.getText().toString();
-                textView.setText(text);
+                Model.model.setText(editText.getText().toString());
+                textView.setText(Model.model.getText());
             }
         });
     }
