@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+    private String text;
     private Button button;
     private TextView textView;
     private EditText editText;
@@ -27,7 +28,8 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textView.setText(editText.getText());
+                text=editText.getText().toString();
+                textView.setText(text);
             }
         });
     }
