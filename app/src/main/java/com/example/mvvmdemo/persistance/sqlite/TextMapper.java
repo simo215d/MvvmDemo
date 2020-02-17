@@ -1,4 +1,4 @@
-package com.example.mvvmdemo.persistance;
+package com.example.mvvmdemo.persistance.sqlite;
 
 import android.content.Context;
 import android.database.Cursor;

@@ -1,21 +1,20 @@
 package com.example.mvvmdemo.model;
 
+import com.example.mvvmdemo.persistance.firebase.DBFacade;
+
 import java.util.Observable;
 
 public class Model extends Observable {
-    private String text;
     //singleton
     public static Model model = new Model();
 
     private Model(){ }
 
-    public void setText(String text){
-        this.text=text;
-        setChanged();
-        notifyObservers();
+    public boolean setText(String text){
+        return DBFacade.getDBFacade().setText(text);
     }
 
     public String getText(){
-        return text;
+        return DBFacade.getDBFacade().getDBText();
     }
 }

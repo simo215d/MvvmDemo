@@ -1,7 +1,7 @@
-package com.example.mvvmdemo.persistance;
+package com.example.mvvmdemo.persistance.sqlite;
 
 
-import com.example.mvvmdemo.view.MainActivity;
+import com.example.mvvmdemo.ui.MainActivity;
 
 public class DBFacade {
     private static final DBFacade theDBFacade = new DBFacade();
