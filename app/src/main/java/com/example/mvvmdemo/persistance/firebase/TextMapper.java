@@ -48,7 +48,7 @@ public class TextMapper extends Observable {
     }
 
     public String getText(){
-        System.out.println("get text has been calles: "+text);
+        System.out.println("get text has been called: "+text);
         return text;
     }
 }

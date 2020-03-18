@@ -36,10 +36,8 @@ public class MainActivity extends AppCompatActivity implements Observer {
             @Override
             public void onClick(View v) {
                 try {
-                    //if it returns true then the 'set' into database was a success and we can the 'get' the data we inserted
-                    if (ViewModel.viewModel.setText(editText.getText().toString())){
-                        System.out.println("everything works as intended");
-                    } else System.out.println("SOMETHING VERY WRONG");
+                    ViewModel.viewModel.setText(editText.getText().toString());
+                    System.out.println("everything works as intended");
                 } catch (Exception e){
                     e.printStackTrace();
                 }
