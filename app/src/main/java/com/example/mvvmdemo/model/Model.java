@@ -10,8 +10,8 @@ public class Model extends Observable {
 
     private Model(){ }
 
-    public boolean setText(String text){
-        return DBFacade.getDBFacade().setText(text);
+    public void setText(String text){
+        DBFacade.getDBFacade().setText(text);
     }
 
     public String getText(){

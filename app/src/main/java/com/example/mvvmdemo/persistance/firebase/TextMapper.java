@@ -41,10 +41,9 @@ public class TextMapper extends Observable {
         });
     }
 
-    public boolean setText(String text){
+    public void setText(String text){
         conditionRef.setValue(text);
         System.out.println("we inserted into firebase database");
-        return true;
     }
 
     public String getText(){

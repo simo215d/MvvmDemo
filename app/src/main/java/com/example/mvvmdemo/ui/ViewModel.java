@@ -13,8 +13,8 @@ public class ViewModel {
         DBFacade.getDBFacade().getTextMapper().addObserver((Observer)MainActivity.activity);
     }
 
-    public boolean setText(String text) {
-        return Model.model.setText(text);
+    public void setText(String text) {
+        Model.model.setText(text);
     }
 
     public String getText(){
