@@ -13,8 +13,8 @@ public class DBFacade {
         return theDBFacade;
     }
 
-    public boolean setText(String text) {
-        return textMapper.setText(text);
+    public void setText(String text) {
+        textMapper.setText(text);
     }
 
     public String getDBText(){

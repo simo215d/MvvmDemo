@@ -1,5 +1,6 @@
 package com.example.mvvmdemo.model;
 
+import com.example.mvvmdemo.entities.Text;
 import com.example.mvvmdemo.persistance.firebase.DBFacade;
 
 import java.util.Observable;
@@ -10,11 +11,23 @@ public class Model extends Observable {
 
     private Model(){ }
 
-    public void setText(String text){
+    /*public void setText(String text){
         DBFacade.getDBFacade().setText(text);
     }
 
-    public String getText(){
+     */
+
+    public void setText(String text){
+        Text.textInstance.setText(text);
+    }
+
+    /*public String getText(){
         return DBFacade.getDBFacade().getDBText();
+    }
+
+     */
+
+    public String getText(){
+        return Text.textInstance.getText();
     }
 }

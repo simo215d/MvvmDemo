@@ -10,7 +10,7 @@ public class ViewModel {
 
     //this adds the main activity to the models list of observers.
     private ViewModel(){
-        DBFacade.getDBFacade().getTextMapper().addObserver((Observer)MainActivity.activity);
+        //DBFacade.getDBFacade().getTextMapper().addObserver((Observer)MainActivity.activity);
     }
 
     public void setText(String text) {
