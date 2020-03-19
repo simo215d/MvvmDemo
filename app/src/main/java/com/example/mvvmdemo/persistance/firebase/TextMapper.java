@@ -2,10 +2,7 @@ package com.example.mvvmdemo.persistance.firebase;
 
 import androidx.annotation.NonNull;
 
-import com.example.mvvmdemo.entities.Text;
 import com.example.mvvmdemo.model.Model;
-import com.example.mvvmdemo.ui.MainActivity;
-import com.example.mvvmdemo.ui.ViewModel;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -16,28 +13,26 @@ import java.util.Observable;
 import java.util.Observer;
 
 public class TextMapper implements Observer {
-    DatabaseReference rootRef;
-    DatabaseReference conditionRef;
+    private DatabaseReference rootRef;
+    private DatabaseReference conditionRef;
 
-    private String text = "error";
+    private Model model;
 
-    public TextMapper(){
-        System.out.println("TextMapper has been created !!!");
+    public TextMapper(Model model){
         rootRef = FirebaseDatabase.getInstance().getReference();
         conditionRef = rootRef.child("Text");
 
-        Text.textInstance.addObserver(this);
+        this.model=model;
+
+        model.getTextInstance().addObserver(this);
 
         //this is triggered initially once, and then whenever it notices a change
         conditionRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 System.out.println("DATA HAS CHANGED: "+dataSnapshot.getValue(String.class));
-                text=dataSnapshot.getValue(String.class);
-                //addObserver((Observer) MainActivity.activity);
-                //setChanged();
-                //notifyObservers();
-                Model.model.setText(text);
+                String text = dataSnapshot.getValue(String.class);
+                model.setText(text);
             }
 
             @Override
@@ -47,18 +42,17 @@ public class TextMapper implements Observer {
         });
     }
 
-    public void setText(String text){
+    private void setText(String text){
         conditionRef.setValue(text);
-        System.out.println("we inserted into firebase database");
+        System.out.println("TextMapper: we inserted into firebase database");
     }
 
-    public String getText(){
-        System.out.println("get text has been called: "+text);
-        return text;
+    public Model getModel(){
+        return model;
     }
 
     @Override
     public void update(Observable observable, Object arg) {
-        setText(Model.model.getText());
+        setText(model.getText());
     }
 }
